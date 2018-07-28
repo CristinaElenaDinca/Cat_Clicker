@@ -1,5 +1,5 @@
-let counter = 0;
-$('.counter').click(function(e) {
-  counter = counter + 1;
-  document.getElementByClassName("counter").innerHTML = counter + "times ";
+let count = 0;
+$('#click').click(function(e) {
+  count = count + 1;
+  document.getElementById("counter").innerHTML = "You clicked " + count + " times ";
 });
