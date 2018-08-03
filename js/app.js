@@ -20,10 +20,11 @@ arrayOfCats.push(
 
 
 //Creating the list of cats to be displayed
-for (let i = 0; i <(arrayOfCats.length+1); i++) {
+for (let i = 0; i < arrayOfCats.length; i++) {
+	let cat = arrayOfCats[i];
 	//Creating a DOM element
     var elem = document.createElement('li');
-    elem.textContent = arrayOfCats[i].name;
+    elem.textContent = cat.name;
     //Adding the DOM element to the document
 	let listOfCat = document.getElementById("list_of_cats");
 	listOfCat.appendChild(elem);
@@ -32,33 +33,31 @@ for (let i = 0; i <(arrayOfCats.length+1); i++) {
         return function() {
             //cleaning the display section
             document.getElementById('displaySection').innerHTML = '';
-            //display on the section the name of the cat and the image
+            //display on the section the name of the cat and the immmage
             document.getElementById('displaySection').innerHTML = 'You have clicked on ' 
             + catCopy.name + ' ' + catCopy.count + 
-            ' times! This is ' + catCopy.name + ' <img src =' + catCopy.image + '>'
-        };
-    })(arrayOfCats[i]));
-}
+            ' times! This is ' + catCopy.name + ' <img id = \"kity\"src =' + catCopy.image + '>';
+            };
+    })(cat));
+};
 
 //Set the event for the immage
 
-for (let i = 0; i < arrayOfCats.length+1; i++) {
+for (let i = 0; i < arrayOfCats.length; i++) {
 	let cat = arrayOfCats[i];
-	let imageOfCat = arrayOfCats[i].image;
-	//adding an event listener
-	elem.addEventListener('click', (function(catCopy) {
+	let clicker = document.getElementById('displaySection');
+	//adding event on image
+	clicker.addEventListener('click', (function(catCopy) {
         return function() {
-            //cleaning the display section
-            document.getElementById('displaySection').innerHTML = '';
-            //increment the nomber of clicks
+        	//increment the nomber of clicks
             catCopy.count++;
-            //renders the updated info
+            document.getElementById('displaySection').innerHTML = '';
+            //display on the section the name of the cat and the immmage
             document.getElementById('displaySection').innerHTML = 'You have clicked on ' 
             + catCopy.name + ' ' + catCopy.count + 
-            ' times! This is ' + catCopy.name + ' <img src =' + catCopy.image + '>'
-        };
-	})(imageOfCat));
+            ' times! This is ' + catCopy.name + ' <img id = \"kity\"src =' + catCopy.image + '>';
+            };
+    })(cat));
 };
-
 
    
